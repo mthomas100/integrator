@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="939" height="414" viewBox="0 0 939 414" role="img" aria-label="integrator status: three submissions queued, three contributors working">
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:12.5px;white-space:pre}
+
+</style>
+<rect width="100%" height="100%" rx="10" fill="#15171c"/>
+<rect width="100%" height="30" rx="10" fill="#23262e"/><rect y="20" width="100%" height="10" fill="#23262e"/>
+<circle cx="18" cy="15" r="5.5" fill="#ff5f57"/><circle cx="36" cy="15" r="5.5" fill="#febc2e"/><circle cx="54" cy="15" r="5.5" fill="#28c840"/>
+<text x="469" y="19.5" fill="#7d8594" text-anchor="middle" style="font-size:12px">integrator status: three submissions queued, three contributors working</text>
+<text x="18.0" y="61.5"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">integrator status</tspan></text>
+<text x="18.0" y="79.0"><tspan fill="#c9ced8">integrator board for ~/work/csvtool: main@d4434c47c</tspan></text>
+<text x="18.0" y="96.5"><tspan fill="#c9ced8">  integrator: 'integrator-csvtool' live (pid 87862), since just now, worktree</tspan></text>
+<text x="18.0" y="114.0"><tspan fill="#c9ced8">    ~/work/csvtool/.claude/worktrees/integration</tspan></text>
+<text x="18.0" y="131.5"><tspan fill="#c9ced8">queue (3):</tspan></text>
+<text x="18.0" y="149.0"><tspan fill="#c9ced8">  #1 csv-quotes: Keep commas inside quoted fields (1 commits, 2 files) check PASS (0 s), just now → clean</tspan></text>
+<text x="18.0" y="166.5"><tspan fill="#c9ced8">  #2 csv-header: read_rows can skip the header row (1 commits, 2 files) check PASS (0 s), just now → clean</tspan></text>
+<text x="18.0" y="184.0"><tspan fill="#c9ced8">  #3 cli-delim: csvtool takes --delimiter (1 commits, 2 files) check PASS (0 s), just now → clean</tspan></text>
+<text x="18.0" y="201.5"><tspan fill="#c9ced8">contributors (3):</tspan></text>
+<text x="18.0" y="219.0"><tspan fill="#c9ced8">  cli-delim: wt/cli-delim live, 1 unlanded, 0 behind, 0 uncommitted; session 'cli-delim'; claims cli.py(e),</tspan></text>
+<text x="18.0" y="236.5"><tspan fill="#c9ced8">    tests/test_cli.py(e)</tspan></text>
+<text x="18.0" y="254.0"><tspan fill="#c9ced8">      task: Add a --delimiter option</tspan></text>
+<text x="18.0" y="271.5"><tspan fill="#c9ced8">  csv-header: wt/csv-header live, 1 unlanded, 0 behind, 0 uncommitted; session 'csv-header'; claims</tspan></text>
+<text x="18.0" y="289.0"><tspan fill="#c9ced8">    tests/test_header.py(e), reader.py(g)</tspan></text>
+<text x="18.0" y="306.5"><tspan fill="#c9ced8">      task: Skip the header row on request</tspan></text>
+<text x="18.0" y="324.0"><tspan fill="#c9ced8">      scope (just now): reader.py: read_rows() gets a skip_header parameter; tests/test_header.py</tspan></text>
+<text x="18.0" y="341.5"><tspan fill="#c9ced8">  csv-quotes: wt/csv-quotes live, 1 unlanded, 0 behind, 0 uncommitted; session 'csv-quotes'; claims reader.py(e),</tspan></text>
+<text x="18.0" y="359.0"><tspan fill="#c9ced8">    tests/test_quotes.py(e)</tspan></text>
+<text x="18.0" y="376.5"><tspan fill="#c9ced8">      task: Keep commas inside quoted fields</tspan></text>
+<text x="18.0" y="394.0"><tspan fill="#c9ced8">      scope (just now): reader.py: new split_line(), read_rows() calls it; tests/test_quotes.py</tspan></text>
+</svg>

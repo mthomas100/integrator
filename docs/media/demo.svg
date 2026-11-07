@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="879" height="782" viewBox="0 0 879 782" role="img" aria-label="integrator: three sessions, one landing (a real run of docs/demo/run-demo.sh)">
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:12.5px;white-space:pre}
+@media (prefers-reduced-motion:no-preference){
+@keyframes t0{0%,2.674%{visibility:hidden}2.675%,100%{visibility:visible}}.r0{animation:t0 22.44s linear infinite}
+@keyframes t1{0%,4.903%{visibility:hidden;clip-path:inset(0 100% 0 0)}4.904%{visibility:visible;clip-path:inset(0 57.14% 0 0);animation-timing-function:steps(20)}6.524%,100%{visibility:visible;clip-path:inset(0 0 0 0)}}.r1{animation:t1 22.44s linear infinite}
+@keyframes t2{0%,8.083%{visibility:hidden}8.084%,100%{visibility:visible}}.r2{animation:t2 22.44s linear infinite}
+@keyframes t3{0%,8.262%{visibility:hidden}8.263%,100%{visibility:visible}}.r3{animation:t3 22.44s linear infinite}
+@keyframes t4{0%,8.440%{visibility:hidden}8.441%,100%{visibility:visible}}.r4{animation:t4 22.44s linear infinite}
+@keyframes t5{0%,14.100%{visibility:hidden}14.101%,100%{visibility:visible}}.r5{animation:t5 22.44s linear infinite}
+@keyframes t6{0%,16.329%{visibility:hidden;clip-path:inset(0 100% 0 0)}16.330%{visibility:visible;clip-path:inset(0 55.88% 0 0);animation-timing-function:steps(19)}17.869%,100%{visibility:visible;clip-path:inset(0 0 0 0)}}.r6{animation:t6 22.44s linear infinite}
+@keyframes t7{0%,19.429%{visibility:hidden}19.430%,100%{visibility:visible}}.r7{animation:t7 22.44s linear infinite}
+@keyframes t8{0%,19.607%{visibility:hidden}19.608%,100%{visibility:visible}}.r8{animation:t8 22.44s linear infinite}
+@keyframes t9{0%,19.785%{visibility:hidden}19.786%,100%{visibility:visible}}.r9{animation:t9 22.44s linear infinite}
+@keyframes t10{0%,19.964%{visibility:hidden}19.965%,100%{visibility:visible}}.r10{animation:t10 22.44s linear infinite}
+@keyframes t11{0%,20.142%{visibility:hidden}20.143%,100%{visibility:visible}}.r11{animation:t11 22.44s linear infinite}
+@keyframes t12{0%,20.320%{visibility:hidden}20.321%,100%{visibility:visible}}.r12{animation:t12 22.44s linear infinite}
+@keyframes t13{0%,20.498%{visibility:hidden}20.499%,100%{visibility:visible}}.r13{animation:t13 22.44s linear infinite}
+@keyframes t14{0%,20.677%{visibility:hidden}20.678%,100%{visibility:visible}}.r14{animation:t14 22.44s linear infinite}
+@keyframes t15{0%,20.855%{visibility:hidden}20.856%,100%{visibility:visible}}.r15{animation:t15 22.44s linear infinite}
+@keyframes t16{0%,29.457%{visibility:hidden}29.458%,100%{visibility:visible}}.r16{animation:t16 22.44s linear infinite}
+@keyframes t17{0%,31.686%{visibility:hidden;clip-path:inset(0 100% 0 0)}31.687%{visibility:visible;clip-path:inset(0 76.92% 0 0);animation-timing-function:steps(50)}35.737%,100%{visibility:visible;clip-path:inset(0 0 0 0)}}.r17{animation:t17 22.44s linear infinite}
+@keyframes t18{0%,41.309%{visibility:hidden;clip-path:inset(0 100% 0 0)}41.310%{visibility:visible;clip-path:inset(0 63.41% 0 0);animation-timing-function:steps(26)}43.416%,100%{visibility:visible;clip-path:inset(0 0 0 0)}}.r18{animation:t18 22.44s linear infinite}
+@keyframes t19{0%,44.976%{visibility:hidden}44.977%,100%{visibility:visible}}.r19{animation:t19 22.44s linear infinite}
+@keyframes t20{0%,45.154%{visibility:hidden}45.155%,100%{visibility:visible}}.r20{animation:t20 22.44s linear infinite}
+@keyframes t21{0%,45.332%{visibility:hidden}45.333%,100%{visibility:visible}}.r21{animation:t21 22.44s linear infinite}
+@keyframes t22{0%,45.511%{visibility:hidden}45.512%,100%{visibility:visible}}.r22{animation:t22 22.44s linear infinite}
+@keyframes t23{0%,45.689%{visibility:hidden}45.690%,100%{visibility:visible}}.r23{animation:t23 22.44s linear infinite}
+@keyframes t24{0%,52.330%{visibility:hidden;clip-path:inset(0 100% 0 0)}52.331%{visibility:visible;clip-path:inset(0 70.00% 0 0);animation-timing-function:steps(35)}55.166%,100%{visibility:visible;clip-path:inset(0 0 0 0)}}.r24{animation:t24 22.44s linear infinite}
+@keyframes t25{0%,56.726%{visibility:hidden}56.727%,100%{visibility:visible}}.r25{animation:t25 22.44s linear infinite}
+@keyframes t26{0%,56.904%{visibility:hidden}56.905%,100%{visibility:visible}}.r26{animation:t26 22.44s linear infinite}
+@keyframes t27{0%,57.083%{visibility:hidden}57.084%,100%{visibility:visible}}.r27{animation:t27 22.44s linear infinite}
+@keyframes t28{0%,57.261%{visibility:hidden}57.262%,100%{visibility:visible}}.r28{animation:t28 22.44s linear infinite}
+@keyframes t29{0%,57.439%{visibility:hidden}57.440%,100%{visibility:visible}}.r29{animation:t29 22.44s linear infinite}
+@keyframes t30{0%,57.618%{visibility:hidden}57.619%,100%{visibility:visible}}.r30{animation:t30 22.44s linear infinite}
+@keyframes t31{0%,57.796%{visibility:hidden}57.797%,100%{visibility:visible}}.r31{animation:t31 22.44s linear infinite}
+@keyframes t32{0%,57.974%{visibility:hidden}57.975%,100%{visibility:visible}}.r32{animation:t32 22.44s linear infinite}
+@keyframes t33{0%,58.152%{visibility:hidden}58.153%,100%{visibility:visible}}.r33{animation:t33 22.44s linear infinite}
+@keyframes t34{0%,58.331%{visibility:hidden}58.332%,100%{visibility:visible}}.r34{animation:t34 22.44s linear infinite}
+@keyframes t35{0%,58.509%{visibility:hidden}58.510%,100%{visibility:visible}}.r35{animation:t35 22.44s linear infinite}
+@keyframes t36{0%,68.092%{visibility:hidden;clip-path:inset(0 100% 0 0)}68.093%{visibility:visible;clip-path:inset(0 53.12% 0 0);animation-timing-function:steps(17)}69.469%,100%{visibility:visible;clip-path:inset(0 0 0 0)}}.r36{animation:t36 22.44s linear infinite}
+@keyframes t37{0%,71.029%{visibility:hidden}71.030%,100%{visibility:visible}}.r37{animation:t37 22.44s linear infinite}
+@keyframes t38{0%,71.207%{visibility:hidden}71.208%,100%{visibility:visible}}.r38{animation:t38 22.44s linear infinite}
+@keyframes t39{0%,71.386%{visibility:hidden}71.387%,100%{visibility:visible}}.r39{animation:t39 22.44s linear infinite}
+@keyframes t40{0%,71.564%{visibility:hidden}71.565%,100%{visibility:visible}}.r40{animation:t40 22.44s linear infinite}
+}
+</style>
+<rect width="100%" height="100%" rx="10" fill="#15171c"/>
+<rect width="100%" height="30" rx="10" fill="#23262e"/><rect y="20" width="100%" height="10" fill="#23262e"/>
+<circle cx="18" cy="15" r="5.5" fill="#ff5f57"/><circle cx="36" cy="15" r="5.5" fill="#febc2e"/><circle cx="54" cy="15" r="5.5" fill="#28c840"/>
+<text x="439" y="19.5" fill="#7d8594" text-anchor="middle" style="font-size:12px">integrator: three sessions, one landing (a real run of docs/demo/run-demo.sh)</text>
+<text class="r0" x="18.0" y="61.5"><tspan fill="#7d8594"># before anything is submitted, the integrator trial-merges every branch against main and the others</tspan></text>
+<text class="r1" x="18.0" y="79.0"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">integrator conflicts</tspan></text>
+<text class="r2" x="18.0" y="96.5"><tspan fill="#f2777a">CONFLICT</tspan><tspan fill="#c9ced8"> csv-header × csv-quotes: reader.py. Order them: one lands first, the other syncs right after.  [new]</tspan></text>
+<text class="r3" x="18.0" y="114.0"><tspan fill="#f0b45e">CLAIM</tspan><tspan fill="#c9ced8">    csv-header changed reader.py, which csv-quotes claimed (reader.py)  [new]</tspan></text>
+<text class="r4" x="18.0" y="131.5"><tspan fill="#f2777a">[exit 1]</tspan></text>
+<text class="r5" x="18.0" y="149.0"><tspan fill="#7d8594"># the integrator lands the queue; #2 collides with #1 in reader.py</tspan></text>
+<text class="r6" x="18.0" y="166.5"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">integrator land all</tspan></text>
+<text class="r7" x="18.0" y="184.0"><tspan fill="#f2777a">CONFLICT landing</tspan><tspan fill="#c9ced8"> #2 (csv-header: read_rows can skip the header row) in: reader.py</tspan></text>
+<text class="r8" x="18.0" y="201.5"><tspan fill="#6cc6d9">hint (this repo):</tspan><tspan fill="#c9ced8"> keep both sides: split_line() is the new splitter, read_rows() its only caller</tspan></text>
+<text class="r9" x="18.0" y="219.0"><tspan fill="#c9ced8">  resolve in ~/work/csvtool/.claude/worktrees/integration: keep both sides' intent (main's side: `git -C</tspan></text>
+<text class="r10" x="18.0" y="236.5"><tspan fill="#c9ced8">    ~/work/csvtool/.claude/worktrees/integration log -p 08ab87bb0024c5a3ca9688b3e5d326a2957f7340 -3 -- &lt;file&gt;`;</tspan></text>
+<text class="r11" x="18.0" y="254.0"><tspan fill="#c9ced8">    theirs: the submission summary and `git -C ~/work/csvtool/.claude/worktrees/integration log -p</tspan></text>
+<text class="r12" x="18.0" y="271.5"><tspan fill="#c9ced8">    f3d711800899f5dff58e106844315876622aba92 -3 -- &lt;file&gt;`), `git add`,</tspan></text>
+<text class="r13" x="18.0" y="289.0"><tspan fill="#c9ced8">  then `integrator land --continue` (a hand resolution needs `--verify` or `--trust WHY`), or `integrator land</tspan></text>
+<text class="r14" x="18.0" y="306.5"><tspan fill="#c9ced8">    --abort` and `integrator bounce` it to its author.</tspan></text>
+<text class="r15" x="18.0" y="324.0"><tspan fill="#f2777a">[exit 3]</tspan></text>
+<text class="r16" x="18.0" y="341.5"><tspan fill="#7d8594"># it keeps both sides' intent in its integration worktree (edit applied by this script)</tspan></text>
+<text class="r17" x="18.0" y="359.0"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">git -C .claude/worktrees/integration add reader.py</tspan></text>
+<text class="r18" x="18.0" y="376.5"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">integrator land --continue</tspan></text>
+<text class="r19" x="18.0" y="394.0"><tspan fill="#f0b45e">NEEDS-VERIFY</tspan><tspan fill="#c9ced8">: the contributors' own checks don't cover what would land:</tspan></text>
+<text class="r20" x="18.0" y="411.5"><tspan fill="#c9ced8">  #2: resolved: conflicts resolved by the integrator in reader.py</tspan></text>
+<text class="r21" x="18.0" y="429.0"><tspan fill="#c9ced8">Choose: `integrator land --continue --verify` (run the checks in the integration worktree, once for the batch),</tspan></text>
+<text class="r22" x="18.0" y="446.5"><tspan fill="#c9ced8">  `--continue --trust "&lt;why it's safe&gt;"`, or `--abort` and bounce it for a sync and re-check by its author.</tspan></text>
+<text class="r23" x="18.0" y="464.0"><tspan fill="#f2777a">[exit 4]</tspan></text>
+<text class="r24" x="18.0" y="481.5"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">integrator land --continue --verify</tspan></text>
+<text class="r25" x="18.0" y="499.0"><tspan fill="#c9ced8">verifying in ~/work/csvtool/.claude/worktrees/integration: python3 -m unittest -q</tspan></text>
+<text class="r26" x="18.0" y="516.5"><tspan fill="#7fd1a0">VERIFY OK</tspan><tspan fill="#c9ced8"> (0 s)</tspan></text>
+<text class="r27" x="18.0" y="534.0"><tspan fill="#7fd1a0">LANDED</tspan><tspan fill="#c9ced8"> on main → 51cee944a (integrator (0 s))</tspan></text>
+<text class="r28" x="18.0" y="551.5"><tspan fill="#c9ced8">  #1 csv-quotes: Keep commas inside quoted fields </tspan><tspan fill="#7fd1a0">[exact]</tspan></text>
+<text class="r29" x="18.0" y="569.0"><tspan fill="#c9ced8">    tell: SendMessage to 'csv-quotes': "#1 landed as 51cee944a."</tspan></text>
+<text class="r30" x="18.0" y="586.5"><tspan fill="#c9ced8">  #2 csv-header: read_rows can skip the header row </tspan><tspan fill="#f0b45e">[resolved, rebased]</tspan></text>
+<text class="r31" x="18.0" y="604.0"><tspan fill="#c9ced8">    tell: SendMessage to 'csv-header': "#2 landed as 51cee944a. It was rebased: run `integrator sync` before</tspan></text>
+<text class="r32" x="18.0" y="621.5"><tspan fill="#c9ced8">      your next submit."</tspan></text>
+<text class="r33" x="18.0" y="639.0"><tspan fill="#c9ced8">  #3 cli-delim: csvtool takes --delimiter </tspan><tspan fill="#7fd1a0">[disjoint, rebased]</tspan></text>
+<text class="r34" x="18.0" y="656.5"><tspan fill="#c9ced8">    tell: SendMessage to 'cli-delim': "#3 landed as 51cee944a. It was rebased: run `integrator sync` before your</tspan></text>
+<text class="r35" x="18.0" y="674.0"><tspan fill="#c9ced8">      next submit."</tspan></text>
+<text class="r36" x="18.0" y="691.5"><tspan fill="#f0b45e">[integrator] $ </tspan><tspan fill="#ffffff">git log --oneline</tspan></text>
+<text class="r37" x="18.0" y="709.0"><tspan fill="#c9ced8">51cee94 csvtool takes --delimiter</tspan></text>
+<text class="r38" x="18.0" y="726.5"><tspan fill="#c9ced8">73f618e read_rows can skip the header row</tspan></text>
+<text class="r39" x="18.0" y="744.0"><tspan fill="#c9ced8">08ab87b Keep commas inside quoted fields</tspan></text>
+<text class="r40" x="18.0" y="761.5"><tspan fill="#c9ced8">d4434c4 csvtool: read_rows, a small CLI and a test</tspan></text>
+</svg>

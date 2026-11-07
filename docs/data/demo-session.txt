@@ -1,0 +1,188 @@
+# csvtool is a tiny CSV reader. Three Claude Code sessions will change it at once; a fourth lands their work.
+[integrator] $ cat .integrator.toml
+check = "python3 -m unittest -q"
+conflict_hint = "keep both sides: split_line() is the new splitter, read_rows() its only caller"
+[integrator] $ integrator start --session integrator-csvtool
+INTEGRATOR STARTED for ~/work/csvtool (main@d4434c47c) as 'integrator-csvtool'. Integration worktree: ~/work/csvtool/.claude/worktrees/integration
+next: arm the watch (Monitor, command `integrator watch`, the longest timeout), then `integrator status`.
+contributors: `integrator launch contributor <topic> "<task>"`, or tell a session: invoke the contributor skill.
+# a session that opens the repo meanwhile is told, and cannot edit the main checkout
+[newcomer] $ claude-event session-start | integrator hook session-start
+An integrator session ('integrator-csvtool', its SendMessage address) is running for this repo (~/work/csvtool): it lands everyone's work on main. Before you edit anything in this repo, invoke the contributor skill: it gives you your own worktree (`integrator join <topic>`), path claims and the submit flow. Edits to the main checkout are refused while it runs (gitignored files are fine).
+[newcomer] $ claude-event pre-edit reader.py | integrator hook pre-edit | jq .hookSpecificOutput
+{
+  "hookEventName": "PreToolUse",
+  "permissionDecision": "deny",
+  "permissionDecisionReason": "The integrator ('integrator-csvtool') owns the main checkout ~/work/csvtool while it runs, so nobody edits it directly (edits there block its landings). Work in your own worktree: invoke the contributor skill, run `integrator join <topic> --session \"<your ListAgents name>\"`, move into the worktree it prints (EnterWorktree), and make this edit there. Gitignored files here are fine."
+}
+# contributors join: `launch` makes the worktree and prints the command that starts its session
+[integrator] $ integrator launch contributor csv-quotes "Keep commas inside quoted fields" --print
+cd ~/work/csvtool/.claude/worktrees/csv-quotes && claude -n csv-quotes 'You are contributor '"'"'csv-quotes'"'"'. A live integrator session ('"'"'integrator-csvtool'"'"') lands everyone'"'"'s work in this repo. First invoke the contributor skill (Skill tool, skill "contributor") and follow it. You are already in your own worktree ~/work/csvtool/.claude/worktrees/csv-quotes on branch wt/csv-quotes; confirm your registration with `integrator join csv-quotes --session "csv-quotes"`, claim the paths you'"'"'ll change, then do this task:
+
+Keep commas inside quoted fields'
+[csv-quotes] $ integrator join csv-quotes --session csv-quotes
+JOINED as csv-quotes: worktree ~/work/csvtool/.claude/worktrees/csv-quotes on wt/csv-quotes.
+integrator: 'integrator-csvtool' (SendMessage to it; it lands your submissions).
+then: `integrator claim <paths you'll change>`, work in small commits, `integrator check`, `integrator submit`.
+[csv-quotes] $ integrator scope "reader.py: new split_line(), read_rows() calls it; tests/test_quotes.py"
+SCOPE for csv-quotes is on the board; 'integrator-csvtool' wakes on it.
+Claim the paths too (`integrator claim`), and run `integrator scope` again if it changes much.
+[csv-quotes] $ integrator claim reader.py tests/test_quotes.py
+CLAIMED reader.py (exclusive) for csv-quotes
+CLAIMED tests/test_quotes.py (exclusive) for csv-quotes
+[csv-header] $ integrator join csv-header --task "Skip the header row on request" --session csv-header
+JOINED as csv-header: worktree ~/work/csvtool/.claude/worktrees/csv-header on wt/csv-header (new, from main).
+integrator: 'integrator-csvtool' (SendMessage to it; it lands your submissions).
+next: move your session into it (Claude Code: EnterWorktree with path ~/work/csvtool/.claude/worktrees/csv-header) and edit only there.
+then: `integrator claim <paths you'll change>`, work in small commits, `integrator check`, `integrator submit`.
+[csv-header] $ integrator scope "reader.py: read_rows() gets a skip_header parameter; tests/test_header.py"
+SCOPE for csv-header is on the board; 'integrator-csvtool' wakes on it.
+Also working now. If your work meets one of theirs (a file, an interface, one feature from two sides, a shared resource), message its session directly to agree the seam, then tell the integrator what you agreed in one line:
+  csv-quotes ('csv-quotes'): reader.py: new split_line(), read_rows() calls it; tests/test_quotes.py
+Claim the paths too (`integrator claim`), and run `integrator scope` again if it changes much.
+[csv-header] $ integrator claim reader.py tests/test_header.py
+CLAIMED tests/test_header.py (exclusive) for csv-header
+REFUSED reader.py: held by csv-quotes (exclusive reader.py). Don't edit around it: ask the integrator ('integrator-csvtool') to arbitrate (it can split the files, order the work or `grant` you the path), and work elsewhere meanwhile.
+[exit 1]
+[integrator] $ integrator grant csv-header reader.py --note "read_rows() only: a small edit, lands second"
+GRANTED reader.py to csv-header (overlaps csv-quotes, told)
+[cli-delim] $ integrator join cli-delim --task "Add a --delimiter option" --session cli-delim
+JOINED as cli-delim: worktree ~/work/csvtool/.claude/worktrees/cli-delim on wt/cli-delim (new, from main).
+integrator: 'integrator-csvtool' (SendMessage to it; it lands your submissions).
+next: move your session into it (Claude Code: EnterWorktree with path ~/work/csvtool/.claude/worktrees/cli-delim) and edit only there.
+then: `integrator claim <paths you'll change>`, work in small commits, `integrator check`, `integrator submit`.
+[cli-delim] $ integrator claim cli.py tests/test_cli.py
+CLAIMED cli.py (exclusive) for cli-delim
+CLAIMED tests/test_cli.py (exclusive) for cli-delim
+# a claimed file is protected from the other sessions' Edit tool
+[cli-delim] $ claude-event pre-edit reader.py | integrator hook pre-edit | jq -r .hookSpecificOutput.permissionDecisionReason
+reader.py is claimed by 'csv-quotes' (reader.py: Keep commas inside quoted fields). Editing it too would make a conflict. Ask the integrator ('integrator-csvtool', SendMessage) to arbitrate: it can order the work, split the files, or `integrator grant cli-delim reader.py`. Work on something else meanwhile.
+# the three sessions work, each in its own worktree (edits applied by this script)
+[csv-quotes] $ git add -A && git commit -qm "Keep commas inside quoted fields"
+[csv-header] $ git add -A && git commit -qm "read_rows can skip the header row"
+[cli-delim] $ git add -A && git commit -qm "csvtool takes --delimiter"
+# before anything is submitted, the integrator trial-merges every branch against main and the others
+[integrator] $ integrator conflicts
+CONFLICT csv-header × csv-quotes: reader.py. Order them: one lands first, the other syncs right after.  [new]
+CLAIM    csv-header changed reader.py, which csv-quotes claimed (reader.py)  [new]
+[exit 1]
+# each contributor checks its own commit, then submits it
+[csv-quotes] $ integrator check
+checking 08ab87bb0 in ~/work/csvtool/.claude/worktrees/csv-quotes: python3 -m unittest -q
+CHECK PASS (0 s, tree e4e76cd9ea). Log: ~/work/csvtool/.git/integrator/checks/20261106-155002-csv-quotes-e4e76cd9ea.txt
+[csv-quotes] $ integrator submit --summary "Keep commas inside quoted fields"
+SUBMITTED #1: Keep commas inside quoted fields (1 commits, 2 files, check PASS). Predicted landing: clean.
+tell the integrator: SendMessage to 'integrator-csvtool': "submitted #1: Keep commas inside quoted fields" (its watch has it too).
+Carry on with your next unit; the integrator tells you when it lands or if it needs you.
+[csv-header] $ integrator check
+checking f3d711800 in ~/work/csvtool/.claude/worktrees/csv-header: python3 -m unittest -q
+CHECK PASS (0 s, tree 2e0fdfa1df). Log: ~/work/csvtool/.git/integrator/checks/20261106-155004-csv-header-2e0fdfa1df.txt
+[csv-header] $ integrator submit --summary "read_rows can skip the header row"
+SUBMITTED #2: read_rows can skip the header row (1 commits, 2 files, check PASS). Predicted landing: clean.
+warning: it touches paths others claimed: reader.py (csv-quotes). The integrator decides.
+tell the integrator: SendMessage to 'integrator-csvtool': "submitted #2: read_rows can skip the header row" (its watch has it too).
+Carry on with your next unit; the integrator tells you when it lands or if it needs you.
+[cli-delim] $ integrator check
+checking 160a0708d in ~/work/csvtool/.claude/worktrees/cli-delim: python3 -m unittest -q
+CHECK PASS (0 s, tree 824478d990). Log: ~/work/csvtool/.git/integrator/checks/20261106-155005-cli-delim-824478d990.txt
+[cli-delim] $ integrator submit --summary "csvtool takes --delimiter"
+SUBMITTED #3: csvtool takes --delimiter (1 commits, 2 files, check PASS). Predicted landing: clean.
+tell the integrator: SendMessage to 'integrator-csvtool': "submitted #3: csvtool takes --delimiter" (its watch has it too).
+Carry on with your next unit; the integrator tells you when it lands or if it needs you.
+[integrator] $ integrator status
+integrator board for ~/work/csvtool: main@d4434c47c
+  integrator: 'integrator-csvtool' live (pid 87862), since just now, worktree ~/work/csvtool/.claude/worktrees/integration
+queue (3):
+  #1 csv-quotes: Keep commas inside quoted fields (1 commits, 2 files) check PASS (0 s), just now → clean
+  #2 csv-header: read_rows can skip the header row (1 commits, 2 files) check PASS (0 s), just now → clean
+  #3 cli-delim: csvtool takes --delimiter (1 commits, 2 files) check PASS (0 s), just now → clean
+contributors (3):
+  cli-delim: wt/cli-delim live, 1 unlanded, 0 behind, 0 uncommitted; session 'cli-delim'; claims cli.py(e), tests/test_cli.py(e)
+      task: Add a --delimiter option
+  csv-header: wt/csv-header live, 1 unlanded, 0 behind, 0 uncommitted; session 'csv-header'; claims tests/test_header.py(e), reader.py(g)
+      task: Skip the header row on request
+      scope (just now): reader.py: read_rows() gets a skip_header parameter; tests/test_header.py
+  csv-quotes: wt/csv-quotes live, 1 unlanded, 0 behind, 0 uncommitted; session 'csv-quotes'; claims reader.py(e), tests/test_quotes.py(e)
+      task: Keep commas inside quoted fields
+      scope (just now): reader.py: new split_line(), read_rows() calls it; tests/test_quotes.py
+# the integrator lands the queue; #2 collides with #1 in reader.py
+[integrator] $ integrator land all
+CONFLICT landing #2 (csv-header: read_rows can skip the header row) in: reader.py
+hint (this repo): keep both sides: split_line() is the new splitter, read_rows() its only caller
+  resolve in ~/work/csvtool/.claude/worktrees/integration: keep both sides' intent (main's side: `git -C ~/work/csvtool/.claude/worktrees/integration log -p 08ab87bb0024c5a3ca9688b3e5d326a2957f7340 -3 -- <file>`; theirs: the submission summary and `git -C ~/work/csvtool/.claude/worktrees/integration log -p f3d711800899f5dff58e106844315876622aba92 -3 -- <file>`), `git add`,
+  then `integrator land --continue` (a hand resolution needs `--verify` or `--trust WHY`), or `integrator land --abort` and `integrator bounce` it to its author.
+[exit 3]
+[integrator] $ sed -n "/<<<<<<</,/>>>>>>>/p" .claude/worktrees/integration/reader.py
+<<<<<<< HEAD
+def split_line(line, delimiter=","):
+    """Split one line, keeping delimiters that sit inside double quotes."""
+    fields, field, quoted = [], "", False
+    for ch in line:
+        if ch == '"':
+            quoted = not quoted
+        elif ch == delimiter and not quoted:
+            fields.append(field)
+            field = ""
+        else:
+            field += ch
+    fields.append(field)
+    return fields
+
+
+def read_rows(text, delimiter=","):
+    rows = []
+    for line in text.splitlines():
+        rows.append(split_line(line, delimiter))
+=======
+def read_rows(text, delimiter=",", skip_header=False):
+    rows = []
+    for line in text.splitlines()[1 if skip_header else 0:]:
+        rows.append(line.split(delimiter))
+>>>>>>> f3d7118 (read_rows can skip the header row)
+# it keeps both sides' intent in its integration worktree (edit applied by this script)
+[integrator] $ git -C .claude/worktrees/integration add reader.py
+[integrator] $ integrator land --continue
+NEEDS-VERIFY: the contributors' own checks don't cover what would land:
+  #2: resolved: conflicts resolved by the integrator in reader.py
+Choose: `integrator land --continue --verify` (run the checks in the integration worktree, once for the batch), `--continue --trust "<why it's safe>"`, or `--abort` and bounce it for a sync and re-check by its author.
+[exit 4]
+[integrator] $ integrator land --continue --verify
+verifying in ~/work/csvtool/.claude/worktrees/integration: python3 -m unittest -q
+VERIFY OK (0 s)
+LANDED on main → 51cee944a (integrator (0 s))
+  #1 csv-quotes: Keep commas inside quoted fields [exact]
+    tell: SendMessage to 'csv-quotes': "#1 landed as 51cee944a."
+  #2 csv-header: read_rows can skip the header row [resolved, rebased]
+    tell: SendMessage to 'csv-header': "#2 landed as 51cee944a. It was rebased: run `integrator sync` before your next submit."
+  #3 cli-delim: csvtool takes --delimiter [disjoint, rebased]
+    tell: SendMessage to 'cli-delim': "#3 landed as 51cee944a. It was rebased: run `integrator sync` before your next submit."
+[integrator] $ git log --oneline
+51cee94 csvtool takes --delimiter
+73f618e read_rows can skip the header row
+08ab87b Keep commas inside quoted fields
+d4434c4 csvtool: read_rows, a small CLI and a test
+# the contributors hear about it at their next edit, sync, and leave; the integrator tidies
+[cli-delim] $ claude-event pre-edit cli.py | integrator hook pre-edit | jq -r .hookSpecificOutput.additionalContext
+integrator: From integrator: #3 landed on main (main is now 51cee944a, disjoint). It was rebased: run `integrator sync` before you submit again.
+[cli-delim] $ integrator status --me
+you: cli-delim, wt/cli-delim in ~/work/csvtool/.claude/worktrees/cli-delim (session 'cli-delim')
+integrator: 'integrator-csvtool' live: SendMessage to it
+branch: 0 commits to land, 3 behind main, uncommitted: none
+claims: cli.py (exclusive), tests/test_cli.py (exclusive)
+SYNC NEEDED: #3 landed rebased → `integrator sync`
+[cli-delim] $ integrator sync
+SYNCED onto main@51cee944a: 0 commits of yours on top. Run `integrator check` again before your next submit (the tree changed).
+[csv-quotes] $ integrator leave
+LEFT. Claims released. The integrator's `integrator prune` removes ~/work/csvtool/.claude/worktrees/csv-quotes once you're out of it (Claude Code: ExitWorktree with action "keep").
+Once you've stopped everything you started (servers, simulators, locks, background checks), end your last message to the user with this line on its own, so they know this session can be closed:
+🏁 SAFE TO CLOSE: csv-quotes, all landed (#1 → 51cee944a)
+[csv-header] $ integrator leave
+LEFT. Claims released. The integrator's `integrator prune` removes ~/work/csvtool/.claude/worktrees/csv-header once you're out of it (Claude Code: ExitWorktree with action "keep").
+Once you've stopped everything you started (servers, simulators, locks, background checks), end your last message to the user with this line on its own, so they know this session can be closed:
+🏁 SAFE TO CLOSE: csv-header, all landed (#2 → 51cee944a)
+[cli-delim] $ integrator leave
+LEFT. Claims released. The integrator's `integrator prune` removes ~/work/csvtool/.claude/worktrees/cli-delim once you're out of it (Claude Code: ExitWorktree with action "keep").
+Once you've stopped everything you started (servers, simulators, locks, background checks), end your last message to the user with this line on its own, so they know this session can be closed:
+🏁 SAFE TO CLOSE: cli-delim, all landed (#3 → 51cee944a)
+[integrator] $ integrator prune
+PRUNED cli-delim, csv-header, csv-quotes

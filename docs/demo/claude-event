@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# claude-event session-start | claude-event pre-edit FILE
+# Print the JSON event Claude Code sends to a hook, for the session named by CLAUDE_CODE_SESSION_ID, working in
+# the current directory (only the fields `integrator hook` reads, not Claude Code's full payload). Demo helper:
+# it lets run-demo.sh pipe a realistic event into `integrator hook ...` without a Claude Code session.
+sid="${CLAUDE_CODE_SESSION_ID:-session}"
+case "${1:-}" in
+  session-start)
+    printf '{"hook_event_name":"SessionStart","session_id":"%s","cwd":"%s"}\n' "$sid" "$PWD" ;;
+  pre-edit)
+    case "${2:?pre-edit needs a file}" in /*) f="$2" ;; *) f="$PWD/$2" ;; esac
+    printf '{"hook_event_name":"PreToolUse","session_id":"%s","cwd":"%s","tool_name":"Edit","tool_input":{"file_path":"%s"}}\n' \
+      "$sid" "$PWD" "$f" ;;
+  *) echo "usage: claude-event session-start | claude-event pre-edit FILE" >&2; exit 2 ;;
+esac
